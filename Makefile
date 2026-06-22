@@ -8,11 +8,11 @@ LDFLAGS = --specs=nosys.specs -lgcc -T./STM32F411RETx.ld
 
 all: $(TARGET).bin
 
-$(TARGET).elf: core.o main.c
-	$(CC) $(CFLAGS) $(LDFLAGS) core.o main.c -o $(TARGET).elf
+$(TARGET).elf: startup.o main.c
+	$(CC) $(CFLAGS) $(LDFLAGS) startup.o main.c -o $(TARGET).elf
 
-core.o: core.S
-	$(CC) -x assembler-with-cpp -c $(CFLAGS) core.S -o core.o
+startup.o: startup.S
+	$(CC) -x assembler-with-cpp -c $(CFLAGS) startup.S -o startup.o
 
 $(TARGET).bin: $(TARGET).elf
 	$(OBJCOPY) -O binary $(TARGET).elf $(TARGET).bin
