@@ -1,7 +1,7 @@
 .cpu cortex-m4
 .thumb
 .syntax unified
-.fpu softvfp
+.fpu fpv4-sp-d16
 
 .global vtable
 .global reset_handler
